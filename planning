@@ -1,0 +1,184 @@
+chapter = {
+  titleText: 'Consider Your Audience',
+  subtitleText: 'Breaking down listeners and goals.',
+  chapterNumber: 1, // number
+  components: [ // [{}] to containing user info
+    {array of JSON}
+  ]
+}
+
+// Okay, question:
+
+// valid chapter.type:
+[ // iterable
+  'slideshow',
+  'video',
+  'summary',
+  'overview',
+  'quiz',
+  'socialMediaPost',
+  'commentary'
+],
+
+component = {
+  type: 'slideshow', // string
+  completed: true, //bool
+  displayName: 'Lesson', // string
+  content: { // Structure depends on component type
+
+  },
+  userContent: { // What the user has done (components, answers, etc)
+
+  }
+}
+// Idea: Let people review posts, make comments on them, that kind of thing.
+
+// Actions:
+// submit answers to quiz
+// submit comment
+// Get chapter <= entire chapter should come as one big JSON object
+// finishModule:
+// Hand back a JSON object with the information that the backend needs to do its
+// thing eg, which things to upvote, or which quiz answers to record, etc
+
+// === component contents: ===
+// slideshow: [ {url, text?} ]
+// video: url, text
+// summary: text
+// quiz: [ {question, [answers], userAnswer} ]
+// socialMediaReview: post, [comments]
+// shortAnswer: [{ prompt, userAnswer, [{peerAnswers}]}]
+
+// Social media review and shortAnswer I think are going to be the most challenging
+// to implement and also probably the most important for making it interesting.
+
+
+// For the purposes of this fake demo, the user is always going to be userId #1
+
+// I feel like I've got a pretty good handle on that. I don't think I'm missing
+// too much, though figuring out what content is need for different components
+// is going to be important.
+
+// Routes:
+
+// /home or /index:
+
+<div>
+  <header />
+  <chaptersOverview />
+</div>
+
+// /chapter/1 or something like that
+<div>
+  <ChapterNav />
+  <ChapterContent />
+</div>
+
+// ChapterNav
+<div>
+  <BackButton />
+  {props.modules.map(...)} // repeated buttons for each component in chapter
+</div>
+
+// ChapterContent
+<div>
+  <ChapterTitle />
+  <ChapterSubTitle />
+  <ComponentContent />
+</div>
+
+// Okay, it's going to be have an API server that just coughs up a bunch of JSON
+// objects. Otherwise the frontend is a simple http server. No log in. Not interested
+// in that. Actually, in light of that, I think that it makes sense to have no
+// users at all. that's a waste of time for right now.
+
+var fakeData = {
+  chapters: [
+    {
+      titleText: 'Consider Your Audience',
+      subtitleText: 'Breaking down listeners and goals.',
+      chapterNumber: 1, // number
+      components: [ // [{}] to containing user info
+        {array of JSON}
+      ]
+    },
+    {
+      titleText: 'Ring Theory and Politics',
+      subtitleText: 'Dealing with anger and voice online.',
+      chapterNumber: 2, // number
+      components: [ // [{}] to containing user info
+        {array of JSON}
+      ]
+    },
+    {
+      titleText: 'Welcoming Communication',
+      subtitleText: 'Redraw the "team" boundaries with non-defensive communication techniques.',
+      chapterNumber: 3, // number
+      components: [ // [{}] to containing user info
+        {array of JSON}
+      ]
+    },
+    {
+      titleText: 'Your Story Has a Frame',
+      subtitleText: 'Language choices cascade.',
+      chapterNumber: 4, // number
+      components: [ // [{}] to containing user info
+        {array of JSON}
+      ]
+    },
+  ]
+}
+
+// basic layout
+// http://react-toolbox.com/#/components/layout
+import { AppBar, Checkbox, IconButton } from 'react-toolbox';
+import { Layout, NavDrawer, Panel, Sidebar } from 'react-toolbox';
+
+class LayoutTest extends React.Component {
+    state = {
+        drawerActive: false,
+        drawerPinned: false,
+        sidebarPinned: false
+    };
+
+    toggleDrawerActive = () => {
+        this.setState({ drawerActive: !this.state.drawerActive });
+    };
+
+    toggleDrawerPinned = () => {
+        this.setState({ drawerPinned: !this.state.drawerPinned });
+    }
+
+    toggleSidebar = () => {
+        this.setState({ sidebarPinned: !this.state.sidebarPinned });
+    };
+
+    render() {
+        return (
+            <Layout>
+                <NavDrawer active={this.state.drawerActive}
+                    pinned={this.state.drawerPinned} permanentAt='xxxl'
+                    onOverlayClick={ this.toggleDrawerActive }>
+                    <p>
+                        Navigation, account switcher, etc. go here.
+                    </p>
+                </NavDrawer>
+                <Panel>
+                    <AppBar leftIcon='menu' onLeftIconClick={ this.toggleDrawerActive } />
+                    <div style={{ flex: 1, overflowY: 'auto', padding: '1.8rem' }}>
+                        <h1>Main Content</h1>
+                        <p>Main content goes here.</p>
+                        <Checkbox label='Pin drawer' checked={this.state.drawerPinned} onChange={this.toggleDrawerPinned} />
+                        <Checkbox label='Show sidebar' checked={this.state.sidebarPinned} onChange={this.toggleSidebar} />
+                    </div>
+                </Panel>
+                <Sidebar pinned={ this.state.sidebarPinned } width={ 5 }>
+                    <div><IconButton icon='close' onClick={ this.toggleSidebar }/></div>
+                    <div style={{ flex: 1 }}>
+                        <p>Supplemental content goes here.</p>
+                    </div>
+                </Sidebar>
+            </Layout>
+        );
+    }
+}
