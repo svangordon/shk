@@ -3,7 +3,7 @@
 module.exports = {
   modify: (config, {target, dev}, webpack) => {
     // do something to config
-    // console.log("========= We're here! =========", config.module.rules[3])
+    // This doesn't actually do anything b/c semantic-ui doesn't require bundling
     const scssRule = {
       test: /\.scss$/,
       use: [{
