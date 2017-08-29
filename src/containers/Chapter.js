@@ -13,20 +13,22 @@ import {
 } from 'semantic-ui-react';
 import axios from 'axios';
 
-export class Home extends React.PureComponent {
+export class Chapter extends React.PureComponent {
   constructor(props) {
     super(props);
+    let chapterNumber = props.location.pathname.split('/').slice(-1)[0];
     axios.get('/fakeData.json')
       .then((resp) => {
+        console.log("chapter data: ", resp.data.chapters[chapterNumber - 1])
         this.setState({
-          chapters: resp.data.chapters,
+          chapter: resp.data.chapters[chapterNumber - 1],
         });
       })
       .catch((error) => {
         console.log(error);
       });
     this.state = {
-      chapters: null,
+      chapter: null,
     };
   }
 
@@ -35,7 +37,7 @@ export class Home extends React.PureComponent {
       <div>
         <Container text style={{ marginTop: '7em' }}>
           <Header as='h1'>Semantic UI React Fixed Template</Header>
-          <p>This is a basic fixed menu template using fixed size containers.</p>
+          <p>this is a chapter component! Maybe it works idk lol</p>
           <p>A text container is used for the main container, which is useful for single column layouts.</p>
 
 
@@ -119,4 +121,4 @@ export class Home extends React.PureComponent {
   }
 }
 
-export default Home;
+export default Chapter;
