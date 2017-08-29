@@ -1,5 +1,16 @@
 import React from 'react'
-import { Container, Divider, Dropdown, Grid, Header, Image, List, Menu, Segment } from 'semantic-ui-react'
+import {
+  Card,
+  Container,
+  Divider,
+  Dropdown,
+  Grid,
+  Header,
+  Image,
+  List,
+  Menu,
+  Segment
+} from 'semantic-ui-react';
 import axios from 'axios';
 
 export class Home extends React.PureComponent {
