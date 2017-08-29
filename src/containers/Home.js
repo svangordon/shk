@@ -31,7 +31,6 @@ export class Home extends React.PureComponent {
   }
 
   render() {
-    console.log("this.state.chapters", this.state.chapters)
     return (
       <div>
         <Container text style={{ marginTop: '7em' }}>
@@ -41,11 +40,21 @@ export class Home extends React.PureComponent {
 
 
           {!this.state.chapters ? null :
-            this.state.chapters.map((chapter, i) => (
-              <div key={i}>
-                <p>{`Chapter ${chapter.chapterNumber}: ${chapter.titleText}`}</p>
-              </div>
-            ))
+            <Card.Group>
+              {this.state.chapters.map((chapter, i) => (
+                <Card key={i}>
+                  <Card.Content>
+                    <Card.Header>
+                      {`Chapter ${chapter.chapterNumber}: ${chapter.titleText}`}
+                    </Card.Header>
+                    <Image src={chapter.chapterImage} />
+                    <Card.Description>
+                      {chapter.subtitleText}
+                    </Card.Description>
+                  </Card.Content>
+                </Card>
+              ))}
+            </Card.Group>
           }
         </Container>
 
