@@ -30,8 +30,8 @@ export class Home extends React.PureComponent {
 
 
           {!this.state.chapters ? null :
-            this.state.chapters.map((chapter) => (
-              <div>
+            this.state.chapters.map((chapter, i) => (
+              <div key={i}>
                 <p>{`Chapter ${chapter.chapterNumber}: ${chapter.titleText}`}</p>
               </div>
             ))

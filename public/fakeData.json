@@ -4,6 +4,7 @@
       "titleText": "Consider Your Audience",
       "subtitleText": "Breaking down listeners and goals.",
       "chapterNumber": 1,
+      "chapterImage": "chapterImages/ch1.png",
       "components": [
       ]
     },
@@ -11,6 +12,7 @@
       "titleText": "Ring Theory and Politics",
       "subtitleText": "Dealing with anger and voice online.",
       "chapterNumber": 2,
+      "chapterImage": "chapterImages/ch2.png",
       "components": [
       ]
     },
@@ -18,6 +20,7 @@
       "titleText": "Welcoming Communication",
       "subtitleText": "Redraw the \"team\" boundaries with non-defensive communication techniques.",
       "chapterNumber": 3,
+      "chapterImage": "chapterImages/ch3.png",
       "components": [
       ]
     },
@@ -25,6 +28,7 @@
       "titleText": "Your Story Has a Frame",
       "subtitleText": "Language choices cascade.",
       "chapterNumber": 4,
+      "chapterImage": "chapterImages/ch4.png",
       "components": [
       ]
     }
