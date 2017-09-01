@@ -1,5 +1,6 @@
 import app from './server';
 import http from 'http';
+import 'semantic-ui-css/semantic.min.css';
 
 const server = http.createServer(app);
 
