@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Input, Label, Menu, Segment } from 'semantic-ui-react'
+import { Icon, Input, Label, Menu, Segment } from 'semantic-ui-react'
 
 export default class ChapterNav extends Component {
   constructor(props) {
@@ -11,10 +11,18 @@ export default class ChapterNav extends Component {
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   render() {
-    const { activeItem } = this.state
+
+    const iconLookup = {
+      slideshow: 'image',
+      video: 'film',
+      summary: 'flag checkered',
+      overview: 'info',
+      quiz: 'question',
+      socialMediaPost: '',
+      commentary: '',
+    };
 
     return (
-
         <Menu
           floated
           vertical
@@ -28,13 +36,15 @@ export default class ChapterNav extends Component {
                 name={module}
                 onClick={this.props.handleModuleClick}
               >
-                <Label color='teal'>1</Label>
+                <Label color='teal'>
+                  <Icon name={iconLookup[module]} />
+                </Label>
                 {module}
               </Menu.Item>
             ))
           }
         </Menu>
-      
+
     )
   }
 }
