@@ -14,6 +14,7 @@ import {
 import axios from 'axios';
 
 import ChapterNav from '../components/ChapterNav';
+import Module from '../components/Module.js';
 
 export class Chapter extends React.PureComponent {
   constructor(props) {
@@ -50,27 +51,9 @@ export class Chapter extends React.PureComponent {
         />
         <Container text style={{ marginTop: '7em' }}>
           <Header as='h1'>{`Chapter ${this.state.chapter.chapterNumber}: ${this.state.chapter.titleText}`}</Header>
-          <p>this is a chapter component! Maybe it works idk lol</p>
-          <p>A text container is used for the main container, which is useful for single column layouts.</p>
-
-
-          {!this.state.chapters ? null :
-            <Card.Group>
-              {this.state.chapters.map((chapter, i) => (
-                <Card key={i}>
-                  <Card.Content>
-                    <Card.Header>
-                      {`Chapter ${chapter.chapterNumber}: ${chapter.titleText}`}
-                    </Card.Header>
-                    <Image src={chapter.chapterImage} />
-                    <Card.Description>
-                      {chapter.subtitleText}
-                    </Card.Description>
-                  </Card.Content>
-                </Card>
-              ))}
-            </Card.Group>
-          }
+          <Module
+            {...this.state.chapter.modules[this.state.activeModule]}
+          />
         </Container>
       </div>
     );

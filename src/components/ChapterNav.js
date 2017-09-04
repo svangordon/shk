@@ -22,6 +22,7 @@ export default class ChapterNav extends Component {
           {
             this.props.modules.map((module, i) => (
               <Menu.Item
+                key={i}
                 active={this.props.activeModule === i}
                 index={i}
                 name={module}
