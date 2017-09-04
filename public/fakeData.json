@@ -6,6 +6,55 @@
       "chapterNumber": 1,
       "chapterImage": "chapterImages/ch1.png",
       "components": [
+        {
+          "type": "overview",
+          "image": "img/014.png",
+          "text": "Nunc quis lectus sodales, commodo turpis vitae, condimentum ex. Praesent rhoncus metus tortor, vitae tincidunt risus ultricies ac. Vestibulum facilisis ipsum felis, et laoreet augue hendrerit id. Aenean vehicula erat sem, vitae varius urna fermentum sit amet. Pellentesque ac ligula congue neque finibus dapibus quis id ex. Morbi ultrices nibh eget placerat laoreet."
+        },
+        {
+          "type": "slideshow",
+          "slides": [
+            "img/001.png",
+            "img/002.png",
+            "img/003.png",
+            "img/004.png",
+            "img/005.png",
+          ]
+        },
+        {
+          "type": "quiz",
+          "overviewText": "Praesent sed arcu lobortis, bibendum tellus eu, laoreet nulla. Praesent et eleifend diam. Sed eu nibh massa. Duis at tincidunt purus. Quisque ut vestibulum orci. Suspendisse nec est et turpis aliquam ultrices a id est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+          "questions": [
+            {
+              "questionText": "Quisque rhoncus magna sit amet metus viverra commodo. Nunc dictum aliquet ipsum, eget finibus magna feugiat a. Phasellus feugiat imperdiet nibh in fringilla?",
+              "correctAnswer": 1,
+              "answers": [
+                {
+                  "text": "Nam lacus velit, interdum eget dolor quis, aliquet aliquet enim.",
+                  "result": "Proin semper ante at eros consectetur, quis vulputate elit pretium."
+                },
+                {
+                  "text": "Suspendisse quis convallis quam, a tempor ante.",
+                  "result": "Nunc eget elit dolor."
+                },
+                {
+                  "text": "Nullam accumsan, nibh in iaculis interdum, velit massa elementum massa, non pretium est orci a dolor.",
+                  "result": "Quisque aliquet nisl orci, vitae convallis urna consectetur vitae."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "video",
+          "text": "Donec laoreet in tortor id pellentesque. Phasellus sodales eu libero quis malesuada. Quisque ut finibus lacus. In elementum, purus vel finibus placerat, orci turpis suscipit elit, eget porttitor ex massa sit amet nisi.",
+          "video": "mov/001.mov"
+        },
+        {
+          "type": "summary",
+          "text": "Morbi nec purus lacinia, fermentum orci in, efficitur justo. Nam eu vestibulum dolor. Ut sit amet tellus ac massa pretium pharetra. Quisque quis ex ut nisi tincidunt imperdiet non vel ipsum. Maecenas fringilla, ipsum nec iaculis aliquam, ante nibh consectetur leo, vitae dignissim odio lacus vel velit. Cras nisl justo, egestas ullamcorper ligula et, rhoncus tincidunt magna.",
+          "image": "img/021.png"
+        }
       ]
     },
     {
