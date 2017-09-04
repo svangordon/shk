@@ -13,6 +13,8 @@ import {
 } from 'semantic-ui-react';
 import axios from 'axios';
 
+import ChapterNav from '../components/ChapterNav';
+
 export class Chapter extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -39,6 +41,7 @@ export class Chapter extends React.PureComponent {
     }
     return (
       <div>
+        <ChapterNav />
         <Container text style={{ marginTop: '7em' }}>
           <Header as='h1'>{`Chapter ${this.state.chapter.chapterNumber}: ${this.state.chapter.titleText}`}</Header>
           <p>this is a chapter component! Maybe it works idk lol</p>
@@ -63,63 +66,6 @@ export class Chapter extends React.PureComponent {
             </Card.Group>
           }
         </Container>
-
-        <Segment
-          inverted
-          vertical
-          style={{ margin: '5em 0em 0em', padding: '5em 0em' }}
-        >
-          <Container textAlign='center'>
-            <Grid divided inverted stackable>
-              <Grid.Row>
-                <Grid.Column width={3}>
-                  <Header inverted as='h4' content='Group 1' />
-                  <List link inverted>
-                    <List.Item as='a'>Link One</List.Item>
-                    <List.Item as='a'>Link Two</List.Item>
-                    <List.Item as='a'>Link Three</List.Item>
-                    <List.Item as='a'>Link Four</List.Item>
-                  </List>
-                </Grid.Column>
-                <Grid.Column width={3}>
-                  <Header inverted as='h4' content='Group 2' />
-                  <List link inverted>
-                    <List.Item as='a'>Link One</List.Item>
-                    <List.Item as='a'>Link Two</List.Item>
-                    <List.Item as='a'>Link Three</List.Item>
-                    <List.Item as='a'>Link Four</List.Item>
-                  </List>
-                </Grid.Column>
-                <Grid.Column width={3}>
-                  <Header inverted as='h4' content='Group 3' />
-                  <List link inverted>
-                    <List.Item as='a'>Link One</List.Item>
-                    <List.Item as='a'>Link Two</List.Item>
-                    <List.Item as='a'>Link Three</List.Item>
-                    <List.Item as='a'>Link Four</List.Item>
-                  </List>
-                </Grid.Column>
-                <Grid.Column width={3}>
-                  <Header inverted as='h4' content='Footer Header' />
-                  <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-
-            <Divider inverted section />
-            <Image
-              centered
-              size='mini'
-              src='/logo.png'
-            />
-            <List horizontal inverted divided link>
-              <List.Item as='a' href='#'>Site Map</List.Item>
-              <List.Item as='a' href='#'>Contact Us</List.Item>
-              <List.Item as='a' href='#'>Terms and Conditions</List.Item>
-              <List.Item as='a' href='#'>Privacy Policy</List.Item>
-            </List>
-          </Container>
-        </Segment>
       </div>
     );
   }
