@@ -13,35 +13,116 @@ import {
 } from 'semantic-ui-react';
 import axios from 'axios';
 
-export class ChapterNav extends React.PureComponent {
+export class Chapter extends React.PureComponent {
   constructor(props) {
     super(props);
-    console.log()
+    let chapterNumber = props.location.pathname.split('/').slice(-1)[0];
+    axios.get('/fakeData.json')
+      .then((resp) => {
+        console.log("chapter data: ", resp.data.chapters[chapterNumber - 1])
+        this.setState({
+          chapter: resp.data.chapters[chapterNumber - 1],
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    this.state = {
+      chapter: null,
+      activeModule: 0
+    };
   }
 
   render() {
+    if (!this.state.chapter) {
+      return null;
+    }
     return (
-      <Menu vertical>
-        <Menu.Item name='inbox' active={activeItem === 'inbox'} onClick={this.handleItemClick}>
-          <Label color='teal'>1</Label>
-          Inbox
-        </Menu.Item>
+      <div>
+        <Container text style={{ marginTop: '7em' }}>
+          <Header as='h1'>{`Chapter ${this.state.chapter.chapterNumber}: ${this.state.chapter.titleText}`}</Header>
+          <p>this is a chapter component! Maybe it works idk lol</p>
+          <p>A text container is used for the main container, which is useful for single column layouts.</p>
 
-        <Menu.Item name='spam' active={activeItem === 'spam'} onClick={this.handleItemClick}>
-          <Label>51</Label>
-          Spam
-        </Menu.Item>
 
-        <Menu.Item name='updates' active={activeItem === 'updates'} onClick={this.handleItemClick}>
-          <Label>1</Label>
-          Updates
-        </Menu.Item>
-        <Menu.Item>
-          <Input icon='search' placeholder='Search mail...' />
-        </Menu.Item>
-      </Menu>
+          {!this.state.chapters ? null :
+            <Card.Group>
+              {this.state.chapters.map((chapter, i) => (
+                <Card key={i}>
+                  <Card.Content>
+                    <Card.Header>
+                      {`Chapter ${chapter.chapterNumber}: ${chapter.titleText}`}
+                    </Card.Header>
+                    <Image src={chapter.chapterImage} />
+                    <Card.Description>
+                      {chapter.subtitleText}
+                    </Card.Description>
+                  </Card.Content>
+                </Card>
+              ))}
+            </Card.Group>
+          }
+        </Container>
+
+        <Segment
+          inverted
+          vertical
+          style={{ margin: '5em 0em 0em', padding: '5em 0em' }}
+        >
+          <Container textAlign='center'>
+            <Grid divided inverted stackable>
+              <Grid.Row>
+                <Grid.Column width={3}>
+                  <Header inverted as='h4' content='Group 1' />
+                  <List link inverted>
+                    <List.Item as='a'>Link One</List.Item>
+                    <List.Item as='a'>Link Two</List.Item>
+                    <List.Item as='a'>Link Three</List.Item>
+                    <List.Item as='a'>Link Four</List.Item>
+                  </List>
+                </Grid.Column>
+                <Grid.Column width={3}>
+                  <Header inverted as='h4' content='Group 2' />
+                  <List link inverted>
+                    <List.Item as='a'>Link One</List.Item>
+                    <List.Item as='a'>Link Two</List.Item>
+                    <List.Item as='a'>Link Three</List.Item>
+                    <List.Item as='a'>Link Four</List.Item>
+                  </List>
+                </Grid.Column>
+                <Grid.Column width={3}>
+                  <Header inverted as='h4' content='Group 3' />
+                  <List link inverted>
+                    <List.Item as='a'>Link One</List.Item>
+                    <List.Item as='a'>Link Two</List.Item>
+                    <List.Item as='a'>Link Three</List.Item>
+                    <List.Item as='a'>Link Four</List.Item>
+                  </List>
+                </Grid.Column>
+                <Grid.Column width={3}>
+                  <Header inverted as='h4' content='Footer Header' />
+                  <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+
+            <Divider inverted section />
+            <Image
+              centered
+              size='mini'
+              src='/logo.png'
+            />
+            <List horizontal inverted divided link>
+              <List.Item as='a' href='#'>Site Map</List.Item>
+              <List.Item as='a' href='#'>Contact Us</List.Item>
+              <List.Item as='a' href='#'>Terms and Conditions</List.Item>
+              <List.Item as='a' href='#'>Privacy Policy</List.Item>
+            </List>
+          </Container>
+        </Segment>
+      </div>
     );
   }
 }
 
-export default ChapterNav;
+export default Chapter;
