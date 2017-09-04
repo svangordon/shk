@@ -31,6 +31,8 @@ export class Home extends React.PureComponent {
   }
 
   render() {
+    console.log("bang bang");
+    console.log(this.state);
     return (
       <div>
         <Container text style={{ marginTop: '7em' }}>
@@ -42,7 +44,10 @@ export class Home extends React.PureComponent {
           {!this.state.chapters ? null :
             <Card.Group>
               {this.state.chapters.map((chapter, i) => (
-                <Card key={i}>
+                <Card
+                  key={i}
+                  href={"/chapter/" + (i + 1)}
+                >
                   <Card.Content>
                     <Card.Header>
                       {`Chapter ${chapter.chapterNumber}: ${chapter.titleText}`}
