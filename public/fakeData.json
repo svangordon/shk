@@ -5,7 +5,7 @@
       "subtitleText": "Breaking down listeners and goals.",
       "chapterNumber": 1,
       "chapterImage": "chapterImages/ch1.png",
-      "components": [
+      "modules": [
         {
           "type": "overview",
           "image": "img/014.png",

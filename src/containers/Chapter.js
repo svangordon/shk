@@ -29,14 +29,18 @@ export class Chapter extends React.PureComponent {
       });
     this.state = {
       chapter: null,
+      activeModule: 0
     };
   }
 
   render() {
+    if (!this.state.chapter) {
+      return null;
+    }
     return (
       <div>
         <Container text style={{ marginTop: '7em' }}>
-          <Header as='h1'>Semantic UI React Fixed Template</Header>
+          <Header as='h1'>{`Chapter ${this.state.chapter.chapterNumber}: ${this.state.chapter.titleText}`}</Header>
           <p>this is a chapter component! Maybe it works idk lol</p>
           <p>A text container is used for the main container, which is useful for single column layouts.</p>
 
