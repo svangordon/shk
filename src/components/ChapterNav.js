@@ -2,7 +2,11 @@ import React, { Component } from 'react'
 import { Input, Label, Menu, Segment } from 'semantic-ui-react'
 
 export default class ChapterNav extends Component {
-  state = { activeItem: 'inbox' }
+  constructor(props) {
+    super(props);
+    this.state = { activeModule: 0 }
+    console.log('nav props', this.props);
+  }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
@@ -15,23 +19,19 @@ export default class ChapterNav extends Component {
           floated
           vertical
         >
-          <Menu.Item name='inbox' active={activeItem === 'inbox'} onClick={this.handleItemClick}>
-            <Label color='teal'>1</Label>
-            Inbox
-          </Menu.Item>
-
-          <Menu.Item name='spam' active={activeItem === 'spam'} onClick={this.handleItemClick}>
-            <Label>51</Label>
-            Spam
-          </Menu.Item>
-
-          <Menu.Item name='updates' active={activeItem === 'updates'} onClick={this.handleItemClick}>
-            <Label>1</Label>
-            Updates
-          </Menu.Item>
-          <Menu.Item>
-            <Input icon='search' placeholder='Search mail...' />
-          </Menu.Item>
+          {
+            this.props.modules.map((module, i) => (
+              <Menu.Item
+                active={this.props.activeModule === i}
+                index={i}
+                name={module}
+                onClick={this.props.handleModuleClick}
+              >
+                <Label color='teal'>1</Label>
+                {module}
+              </Menu.Item>
+            ))
+          }
         </Menu>
       </Segment>
     )

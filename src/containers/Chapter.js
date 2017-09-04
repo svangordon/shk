@@ -35,13 +35,19 @@ export class Chapter extends React.PureComponent {
     };
   }
 
+  handleModuleClick = (e, module) => {this.setState({activeModule: module.index})}
+
   render() {
     if (!this.state.chapter) {
       return null;
     }
     return (
       <div>
-        <ChapterNav />
+        <ChapterNav
+          activeModule={this.state.activeModule}
+          handleModuleClick={this.handleModuleClick}
+          modules={this.state.chapter.modules.map(module => module.type)}
+        />
         <Container text style={{ marginTop: '7em' }}>
           <Header as='h1'>{`Chapter ${this.state.chapter.chapterNumber}: ${this.state.chapter.titleText}`}</Header>
           <p>this is a chapter component! Maybe it works idk lol</p>
