@@ -14,7 +14,7 @@ export default class ChapterNav extends Component {
     const { activeItem } = this.state
 
     return (
-      <Segment basic floated={"left"}>
+
         <Menu
           floated
           vertical
@@ -34,7 +34,7 @@ export default class ChapterNav extends Component {
             ))
           }
         </Menu>
-      </Segment>
+      
     )
   }
 }

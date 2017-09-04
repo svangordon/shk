@@ -7,12 +7,12 @@ const PageHeader = () =>
       <Menu.Item as='a' header>
         <Image
           size='mini'
-          src='/logo.png'
+          src='/catIcon.png'
           style={{ marginRight: '1.5em' }}
         />
-        Project Name
+        Self-Herding Kittens
       </Menu.Item>
-      <Menu.Item as='a'>Home</Menu.Item>
+      <Menu.Item as='a' href="/">Home</Menu.Item>
 
       <Dropdown item simple text='Dropdown'>
         <Dropdown.Menu>

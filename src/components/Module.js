@@ -25,12 +25,8 @@ export class Module extends Component {
 
   render() {
     const { activeItem } = this.state
-
-    return (
-      <Segment basic floated={"left"}>
-        {this.renderModule(this.props)}
-      </Segment>
-    )
+    // const renderedModule = renderModule(this.props);
+    return this.renderModule(this.props);
   }
 }
 
