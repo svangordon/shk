@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Button,
   Card,
   Container,
   Divider,
@@ -7,6 +8,7 @@ import {
   Grid,
   Header,
   Image,
+  Icon,
   List,
   Menu,
   Segment
@@ -38,6 +40,8 @@ export class Chapter extends React.PureComponent {
 
   handleModuleClick = (e, module) => {this.setState({activeModule: module.index})}
 
+  handleMoveModule = (step) => (e) => {this.setState({activeModule: this.state.activeModule + step})}
+
   render() {
     if (!this.state.chapter) {
       return null;
@@ -54,6 +58,20 @@ export class Chapter extends React.PureComponent {
           <Module
             {...this.state.chapter.modules[this.state.activeModule]}
           />
+          <Button
+            floated={'left'}
+            disabled={this.state.activeModule === 0}
+            onClick={this.handleMoveModule(-1)}
+          >
+            <Icon name='chevron left' />
+          </Button>
+          <Button
+            floated={'right'}
+            disabled={this.state.activeModule === this.state.chapter.modules.length - 1}
+            onClick={this.handleMoveModule(1)}
+          >
+            <Icon name='chevron right' />
+          </Button>
         </Container>
       </div>
     );

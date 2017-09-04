@@ -36,9 +36,7 @@ export default class ChapterNav extends Component {
                 name={module}
                 onClick={this.props.handleModuleClick}
               >
-                <Label color='teal'>
-                  <Icon name={iconLookup[module]} />
-                </Label>
+                <Icon fitted name={iconLookup[module]} />
                 {module}
               </Menu.Item>
             ))
