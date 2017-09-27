@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Card, Icon, Image, Segment } from 'semantic-ui-react';
 
 import Overview from './Overview';
+import Quiz from './Quiz';
 
 export class Module extends Component {
   constructor(props) {
@@ -15,8 +16,11 @@ export class Module extends Component {
     console.log("module in rendermod", module)
     switch (module.type) {
       case 'overview':
-        console.log("bang", module.image)
+        // console.log("bang", module.image)
         return <Overview image={module.image} text={module.text} />
+        break;
+      case 'quiz':
+        return <Quiz overview={module.overviewText} questions={module.questions} />
         break;
       default:
         return null;
